@@ -122,6 +122,7 @@
                 </owl:someValuesFrom>
             </owl:Restriction>
         </owl:equivalentClass>
+        <owl:disjointWith rdf:resource="&ICD10Initial;Gestational_Diabetes_Mellitus"/>
     </owl:Class>
     
 
@@ -616,6 +617,20 @@
 
     <owl:Class rdf:about="&ICD10Initial;Gestational_Diabetes">
         <rdfs:subClassOf rdf:resource="&ICD10Initial;UMLS"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.knoesis.org/ontologies/2013/0/ICD10Initial.owl#Gestational_Diabetes_Mellitus -->
+
+    <owl:Class rdf:about="&ICD10Initial;Gestational_Diabetes_Mellitus">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&ICD10Initial;hasCondition"/>
+                <owl:someValuesFrom rdf:resource="&ICD10Initial;Gestational_Diabetes"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
     </owl:Class>
     
 
@@ -1284,6 +1299,14 @@
     
 
 
+    <!-- http://www.knoesis.org/ontologies/2013/0/ICD10Initial.owl#gestational_diabetes_milletus -->
+
+    <owl:NamedIndividual rdf:about="&ICD10Initial;gestational_diabetes_milletus">
+        <rdf:type rdf:resource="&ICD10Initial;Gestational_Diabetes_Mellitus"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.knoesis.org/ontologies/2013/0/ICD10Initial.owl#hyperosmolarity -->
 
     <owl:NamedIndividual rdf:about="&ICD10Initial;hyperosmolarity">
@@ -1311,12 +1334,6 @@
         <hasCondition rdf:resource="&ICD10Initial;coma"/>
         <hasCondition rdf:resource="&ICD10Initial;hyperosmolarity"/>
     </owl:Thing>
-    <rdf:Description>
-        <rdf:type rdf:resource="&owl;NegativePropertyAssertion"/>
-        <owl:assertionProperty rdf:resource="&ICD10Initial;hasCondition"/>
-        <owl:targetIndividual rdf:resource="&ICD10Initial;neonatal_diabetes_mellitus"/>
-        <owl:sourceIndividual rdf:resource="&ICD10Initial;patient1"/>
-    </rdf:Description>
 </rdf:RDF>
 
 
