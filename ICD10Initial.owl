@@ -52,6 +52,12 @@
     
 
 
+    <!-- http://www.knoesis.org/ontologies/2013/0/ICD10Initial.owl#isQualifiedTo -->
+
+    <owl:ObjectProperty rdf:about="&ICD10Initial;isQualifiedTo"/>
+    
+
+
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
@@ -67,6 +73,7 @@
 
     <owl:Class rdf:about="&ICD10Initial;C0010481">
         <rdfs:subClassOf rdf:resource="&ICD10Initial;UMLS"/>
+        <owl:disjointWith rdf:resource="&ICD10Initial;Gestational_Diabetes"/>
     </owl:Class>
     
 
@@ -75,6 +82,7 @@
 
     <owl:Class rdf:about="&ICD10Initial;C0011849">
         <rdfs:subClassOf rdf:resource="&ICD10Initial;UMLS"/>
+        <owl:disjointWith rdf:resource="&ICD10Initial;Gestational_Diabetes"/>
     </owl:Class>
     
 
@@ -113,6 +121,9 @@
                     <owl:Class>
                         <owl:intersectionOf rdf:parseType="Collection">
                             <rdf:Description rdf:about="&ICD10Initial;C0011849"/>
+                            <owl:Class>
+                                <owl:complementOf rdf:resource="&ICD10Initial;Gestational_Diabetes"/>
+                            </owl:Class>
                             <owl:Restriction>
                                 <owl:onProperty rdf:resource="&ICD10Initial;dueTo"/>
                                 <owl:someValuesFrom rdf:resource="&ICD10Initial;C0010481"/>
@@ -122,7 +133,6 @@
                 </owl:someValuesFrom>
             </owl:Restriction>
         </owl:equivalentClass>
-        <owl:disjointWith rdf:resource="&ICD10Initial;Gestational_Diabetes_Mellitus"/>
     </owl:Class>
     
 
@@ -621,31 +631,9 @@
     
 
 
-    <!-- http://www.knoesis.org/ontologies/2013/0/ICD10Initial.owl#Gestational_Diabetes_Mellitus -->
-
-    <owl:Class rdf:about="&ICD10Initial;Gestational_Diabetes_Mellitus">
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&ICD10Initial;hasCondition"/>
-                <owl:someValuesFrom rdf:resource="&ICD10Initial;Gestational_Diabetes"/>
-            </owl:Restriction>
-        </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
-    </owl:Class>
-    
-
-
     <!-- http://www.knoesis.org/ontologies/2013/0/ICD10Initial.owl#Hyperosmolarity -->
 
     <owl:Class rdf:about="&ICD10Initial;Hyperosmolarity">
-        <rdfs:subClassOf rdf:resource="&ICD10Initial;UMLS"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.knoesis.org/ontologies/2013/0/ICD10Initial.owl#Neonatal_Diabetes_Mellitus -->
-
-    <owl:Class rdf:about="&ICD10Initial;Neonatal_Diabetes_Mellitus">
         <rdfs:subClassOf rdf:resource="&ICD10Initial;UMLS"/>
     </owl:Class>
     
@@ -1301,9 +1289,7 @@
 
     <!-- http://www.knoesis.org/ontologies/2013/0/ICD10Initial.owl#gestational_diabetes_milletus -->
 
-    <owl:NamedIndividual rdf:about="&ICD10Initial;gestational_diabetes_milletus">
-        <rdf:type rdf:resource="&ICD10Initial;Gestational_Diabetes_Mellitus"/>
-    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="&ICD10Initial;gestational_diabetes_milletus"/>
     
 
 
@@ -1317,9 +1303,7 @@
 
     <!-- http://www.knoesis.org/ontologies/2013/0/ICD10Initial.owl#neonatal_diabetes_mellitus -->
 
-    <owl:NamedIndividual rdf:about="&ICD10Initial;neonatal_diabetes_mellitus">
-        <rdf:type rdf:resource="&ICD10Initial;Neonatal_Diabetes_Mellitus"/>
-    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="&ICD10Initial;neonatal_diabetes_mellitus"/>
     
 
 
@@ -1328,12 +1312,18 @@
     <owl:Thing rdf:about="&ICD10Initial;patient1">
         <rdf:type rdf:resource="&ICD10Initial;Patient"/>
         <rdf:type rdf:resource="&owl;NamedIndividual"/>
-        <hasCondition rdf:resource="&ICD10Initial;c0010481"/>
         <hasCondition rdf:resource="&ICD10Initial;c0011849"/>
-        <hasCondition rdf:resource="&ICD10Initial;c0020538"/>
-        <hasCondition rdf:resource="&ICD10Initial;coma"/>
-        <hasCondition rdf:resource="&ICD10Initial;hyperosmolarity"/>
+        <hasCondition rdf:resource="&ICD10Initial;gestational_diabetes"/>
     </owl:Thing>
+    
+
+
+    <!-- http://www.knoesis.org/ontologies/2013/0/ICD10Initial.owl#patient2 -->
+
+    <owl:NamedIndividual rdf:about="&ICD10Initial;patient2">
+        <rdf:type rdf:resource="&ICD10Initial;Patient"/>
+        <hasCondition rdf:resource="&ICD10Initial;gestational_diabetes"/>
+    </owl:NamedIndividual>
 </rdf:RDF>
 
 
